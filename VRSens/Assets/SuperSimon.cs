@@ -22,14 +22,13 @@ public class SuperSimon : MonoBehaviour
 
     int ActualLvl;
     List<int> list = new List<int>();
+    int index = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         ActualLvl = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -38,7 +37,6 @@ public class SuperSimon : MonoBehaviour
         }
     }
 
-    // add a random number to the list
     private void NextLvl()
     {
         list.Add(UnityEngine.Random.Range(0, 4));
@@ -46,7 +44,6 @@ public class SuperSimon : MonoBehaviour
         StartCoroutine(PlaySequence());
     }
 
-    // corountine to make the button go down and glow
     private IEnumerator PlaySequence()
     {
         float timeToWait = BaseSpeed / ActualLvl * SpeedMultiplier;
@@ -93,5 +90,73 @@ public class SuperSimon : MonoBehaviour
             }
             yield return new WaitForSeconds(timeToWait);
         }   
+    }
+
+    public void RedButtonPressed()
+    {
+        if (list[index] == 0)
+        {
+            index++;
+            if (index == ActualLvl)
+            {
+                index = 0;
+                NextLvl();
+            }
+        }
+        else
+        {
+            Debug.Log("You lose");
+        }
+    }
+
+    public void BlueButtonPressed()
+    {
+        if (list[index] == 1)
+        {
+            index++;
+            if (index == ActualLvl)
+            {
+                index = 0;
+                NextLvl();
+            }
+        }
+        else
+        {
+            Debug.Log("You lose");
+        }
+    }
+
+    public void GreenButtonPressed()
+    {
+        if (list[index] == 2)
+        {
+            index++;
+            if (index == ActualLvl)
+            {
+                index = 0;
+                NextLvl();
+            }
+        }
+        else
+        {
+            Debug.Log("You lose");
+        }
+    }
+
+    public void YellowButtonPressed()
+    {
+        if (list[index] == 3)
+        {
+            index++;
+            if (index == ActualLvl)
+            {
+                index = 0;
+                NextLvl();
+            }
+        }
+        else
+        {
+            Debug.Log("You lose");
+        }
     }
 }
